@@ -1,6 +1,6 @@
 # Pydantic AI MCP Agent - Tool Integration Framework
 
-This project demonstrates how to build an AI agent that integrates with Model Context Protocol (MCP) servers, allowing AI models to access external tools through a standardized interface. It uses Pydantic AI for the agent framework and MCP for tool integration, and the MCP configuration is similar to Claude Desktop/Windsurf/Cline.
+This project demonstrates how to build an AI agent that integrates with Model Context Protocol (MCP) servers, allowing AI models to access external tools through a standardized interface. It uses git for version control, Pydantic AI for the agent framework and MCP for tool integration, and the MCP configuration is similar to Claude Desktop/Windsurf/Cline.
 
 ## Quick Start
 
