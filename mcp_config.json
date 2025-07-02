@@ -1,0 +1,157 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--read-only",
+        "--project-ref=vcvwwuctacglcqxqoyne"
+      ],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "sbp_1e591b2b2586568be718a3653c93f2216566ef7e"
+      }
+    },
+    "notionMCP": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.notion.com/sse"]
+    },
+    "raindrop-mcp-python": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@ddltn/raindrop-mcp-python",
+        "--key",
+        "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c",
+        "--profile",
+        "interesting-ladybug-QeygmD"
+      ]
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@smithery-ai/github",
+        "--key",
+        "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c",
+        "--profile",
+        "interesting-ladybug-QeygmD"
+      ]
+    },
+    "n8n-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@tecnologiacomigo/n8n-mcp-server",
+        "--key",
+        "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c",
+        "--profile",
+        "interesting-ladybug-QeygmD"
+      ]
+    },
+    "tavily-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@tavily-ai/tavily-mcp",
+        "--key",
+        "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c",
+        "--profile",
+        "interesting-ladybug-QeygmD"
+      ]
+    },
+    "py-mcp-youtube-toolbox": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@jikime/py-mcp-youtube-toolbox",
+        "--key",
+        "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c",
+        "--profile",
+        "interesting-ladybug-QeygmD"
+      ]
+    },
+    "mcp-browserbase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@browserbasehq/mcp-browserbase",
+        "--key",
+        "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c",
+        "--profile",
+        "interesting-ladybug-QeygmD"
+      ]
+    },
+    "mem0-memory-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@mem0ai/mem0-memory-mcp",
+        "--key",
+        "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c",
+        "--profile",
+        "interesting-ladybug-QeygmD"
+      ]
+    },
+    "Office-Word-MCP-Server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@GongRzhe/Office-Word-MCP-Server",
+        "--key",
+        "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c"
+      ]
+    },
+    "playwright-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@cloudflare/playwright-mcp",
+        "--key",
+        "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c"
+      ]
+    },
+    "mcp-stagehand": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@browserbasehq/mcp-stagehand",
+        "--key",
+        "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c",
+        "--profile",
+        "interesting-ladybug-QeygmD"
+      ]
+    },
+    "context7-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@upstash/context7-mcp",
+        "--key",
+        "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c"
+      ]
+    }
+  }
+}

@@ -4,6 +4,7 @@ from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 from mcp.types import Tool as MCPTool
 from contextlib import AsyncExitStack
+from dotenv import load_dotenv
 from typing import Any, List
 import asyncio
 import logging
@@ -12,17 +13,16 @@ import json
 import os
 
 logging.basicConfig(
-    level=logging.ERROR, format="%(asctime)s - %(levelname)s - %(message)s"
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
 class MCPClient:
     """Manages connections to one or more MCP servers based on mcp_config.json"""
 
     def __init__(self) -> None:
-        self.servers: List[MCPServer] = []
+        self.servers: MCPServer = []
         self.config: dict[str, Any] = {}
         self.tools: List[Any] = []
-        self.exit_stack = AsyncExitStack()
 
     def load_servers(self, config_path: str) -> None:
         """Load server configuration from a JSON file (typically mcp_config.json)
@@ -47,27 +47,22 @@ class MCPClient:
             except Exception as e:
                 logging.error(f"Failed to initialize server: {e}")
                 await self.cleanup_servers()
-                return []
+                raise
+                return
 
         return self.tools
 
     async def cleanup_servers(self) -> None:
         """Clean up all servers properly."""
+        cleanup_tasks = []
         for server in self.servers:
-            try:
-                await server.cleanup()
-            except Exception as e:
-                logging.warning(f"Warning during cleanup of server {server.name}: {e}")
+            cleanup_tasks.append(asyncio.create_task(server.cleanup()))
 
-    async def cleanup(self) -> None:
-        """Clean up all resources including the exit stack."""
-        try:
-            # First clean up all servers
-            await self.cleanup_servers()
-            # Then close the exit stack
-            await self.exit_stack.aclose()
-        except Exception as e:
-            logging.warning(f"Warning during final cleanup: {e}")
+        if cleanup_tasks:
+            try:
+                await asyncio.gather(*cleanup_tasks, return_exceptions=True)
+            except Exception as e:
+                logging.warning(f"Warning during final cleanup: {e}")
 
 
 class MCPServer:
@@ -143,4 +138,4 @@ class MCPServer:
                 self.session = None
                 self.stdio_context = None
             except Exception as e:
-                logging.error(f"Error during cleanup of server {self.name}: {e}")  
+                logging.error(f"Error during cleanup of server {self.name}: {e}")    
