@@ -1,19 +1,43 @@
 FROM python:3.11-slim
 
-# Build argument for port with default value
+# -----------------------------
+# Install Node.js (includes npx)
+# -----------------------------
+RUN apt-get update && \
+    apt-get install -y curl gnupg && \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g npm && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# -----------------------------
+# Set build-time and runtime env
+# -----------------------------
 ARG PORT=8001
 ENV PORT=${PORT}
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV PIP_NO_CACHE_DIR=1
 
 WORKDIR /app
 
-# Copy the application code
+# -----------------------------
+# Install Python dependencies
+# -----------------------------
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# -----------------------------
+# Copy application code
+# -----------------------------
 COPY . .
 
-# Install the Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Expose the port from build argument
+# -----------------------------
+# Expose app port
+# -----------------------------
 EXPOSE ${PORT}
 
-# Command to run the application
-CMD ["sh", "-c", "uvicorn pydantic_mcp_agent_endpoint:app --host 0.0.0.0 --port ${PORT}"]
+# -----------------------------
+# Run the app
+# -----------------------------
+CMD ["uvicorn", "pydantic_mcp_agent_endpoint:app", "--host", "0.0.0.0", "--port", "8001"]
