@@ -118,30 +118,6 @@
         "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c"
       ]
     },
-    "playwright-mcp": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@smithery/cli@latest",
-        "run",
-        "@cloudflare/playwright-mcp",
-        "--key",
-        "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c"
-      ]
-    },
-    "mcp-stagehand": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@smithery/cli@latest",
-        "run",
-        "@browserbasehq/mcp-stagehand",
-        "--key",
-        "d6cf88ed-3cb7-437e-9e02-2fdcfbd4bd1c",
-        "--profile",
-        "interesting-ladybug-QeygmD"
-      ]
-    },
     "context7-mcp": {
       "command": "npx",
       "args": [
